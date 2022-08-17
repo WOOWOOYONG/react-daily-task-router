@@ -15,7 +15,7 @@ const Register = () => {
   return <p>這是註冊頁面</p>;
 };
 const Main = () => {
-  return <p>404 NOT FOUND</p>;
+  return <p style={{ color: "red" }}>404 NOT FOUND</p>;
 };
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/todo" element={<Todo />} />
-          <Route path="*" element={<Main style={{ padding: "1rem" }} />} />
+          <Route path="*" element={<Main />} />
         </Routes>
         {/* 練習區 */}
       </HashRouter>
