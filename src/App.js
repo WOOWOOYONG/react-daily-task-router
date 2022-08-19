@@ -5,6 +5,8 @@ import {
   Routes,
   Route,
   useNavigate,
+  useParams,
+  Outlet,
 } from "react-router-dom";
 
 const Homepage = () => {
@@ -34,6 +36,21 @@ const Notfound = () => {
   return <p style={{ color: "red" }}>404 NOT FOUND</p>;
 };
 
+//Post父元件
+const Post = () => {
+  return (
+    <>
+      <h1>Post頁面</h1>
+      <Outlet />
+    </>
+  );
+};
+//PostId子元件
+const PostId = () => {
+  let params = useParams();
+  return <p>Post ID: {params.postId}</p>;
+};
+
 function App() {
   return (
     <div className="container">
@@ -51,6 +68,9 @@ function App() {
           <NavLink to="/todo">
             <p>Todo 頁面</p>
           </NavLink>
+          <NavLink to="/post">
+            <p>Post詳細頁面</p>
+          </NavLink>
         </div>
         {/* Routes, Route 練習區 */}
         <Routes>
@@ -58,6 +78,9 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="todo" element={<Todo />} />
+          <Route path="post" element={<Post />}>
+            <Route path=":postId" element={<PostId />} />
+          </Route>
           <Route path="*" element={<Notfound />} />
         </Routes>
         {/* 練習區 */}
